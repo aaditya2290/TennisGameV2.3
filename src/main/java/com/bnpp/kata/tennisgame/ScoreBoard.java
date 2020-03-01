@@ -2,6 +2,7 @@ package com.bnpp.kata.tennisgame;
 
 public class ScoreBoard {
 
+	private static final String LOVE_ALL = "Love All";
 	private static final int MINIMUM_POINTS_DIFFERENCE_FOR_WIN = 2;
 	private static final int MINIMUM_POINTS_FOR_WIN = 4;
 	private static final int POINTS_DIFFERENCE_FOR_ADVANTAGE = 1;
@@ -13,7 +14,7 @@ public class ScoreBoard {
 	public ScoreBoard(Player firstPlayer, Player secondPlayer) {
 		this.firstPlayer = firstPlayer;
 		this.secondPlayer = secondPlayer;
-		this.boardResult = "Love All";
+		this.boardResult = LOVE_ALL;
 	}
 
 	public void updateGamePoints() {
