@@ -11,6 +11,8 @@ public class PointsToScoreMapper {
 		{
 			put(0, "Love");
 			put(1, "Fifteen");
+			put(2, "Thirty");
+			put(3, "Forty");
 		}
 	};
 
