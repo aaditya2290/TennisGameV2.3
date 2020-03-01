@@ -15,11 +15,13 @@ public class ScoreBoard {
 	}
 
 	public void updateGamePoints() {
+		int playerPointsCompared = firstPlayer.compareTo(secondPlayer);
+
 		if (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
 				&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
-				&& firstPlayer.compareTo(secondPlayer) == POINTS_DIFFERENCE_FOR_ADVANTAGE) {
+				&& playerPointsCompared == POINTS_DIFFERENCE_FOR_ADVANTAGE) {
 			boardResult = "Advantage " + firstPlayer.getName();
-		} else if (firstPlayer.compareTo(secondPlayer) == 0) {
+		} else if (playerPointsCompared == 0) {
 			boardResult = (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE) ? "Deuce"
 					: firstPlayer.getScore() + " All";
 		} else {
