@@ -4,16 +4,24 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class TennisGameTest {
 
+	private Player firstPlayer;
+	private Player secondPlayer;
+	private TennisGame tennisGame;
+
+	@Before
+	public void setUp() {
+		firstPlayer = new Player("Sampras");
+		secondPlayer = new Player("Agassi");
+		tennisGame = new TennisGame(firstPlayer, secondPlayer);
+	}
+
 	@Test
 	public void tennisGameShouldHaveTwoPlayers() {
-		Player firstPlayer = new Player("Sampras");
-		Player secondPlayer = new Player("Agassi");
-		TennisGame tennisGame = new TennisGame(firstPlayer, secondPlayer);
-
 		Player tennisGameFirstPlayer = tennisGame.getFirstPlayer();
 		Player tennisGameSecondPlayer = tennisGame.getSecondPlayer();
 
@@ -25,10 +33,6 @@ public class TennisGameTest {
 
 	@Test
 	public void tennisGameShouldHaveAScoreBoardForPlayers() {
-		Player firstPlayer = new Player("Sampras");
-		Player secondPlayer = new Player("Agassi");
-		TennisGame tennisGame = new TennisGame(firstPlayer, secondPlayer);
-
 		ScoreBoard tennisGameScoreBoard = tennisGame.getScoreBoard();
 
 		assertThat(tennisGameScoreBoard, isA(ScoreBoard.class));
