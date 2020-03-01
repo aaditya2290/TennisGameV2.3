@@ -63,7 +63,7 @@ public class ScoreBoard {
 				firstPlayer.getName(), String.valueOf(firstPlayer.getPoints()),
 				secondPlayer.getName(),
 				String.valueOf(secondPlayer.getPoints()), "Result", boardResult };
-		String displayResult = new String();
+		String displayResult = "\n";
 		for (int scoreIndex = 0; scoreIndex <= scoreBoardContents.length - 1; scoreIndex += 2) {
 			displayResult += String.format("|%1$-25s|%2$-25s|",
 					scoreBoardContents[scoreIndex],
