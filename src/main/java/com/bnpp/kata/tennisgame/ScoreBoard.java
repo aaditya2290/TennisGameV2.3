@@ -32,9 +32,11 @@ public class ScoreBoard {
 					&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
 					&& playerPointsDifference == POINTS_DIFFERENCE_FOR_ADVANTAGE;
 
-			if ((firstPlayer.getPoints() > MINIMUM_POINTS_FOR_WIN || secondPlayer
+			boolean isInvalid = (firstPlayer.getPoints() > MINIMUM_POINTS_FOR_WIN || secondPlayer
 					.getPoints() > MINIMUM_POINTS_FOR_WIN)
-					&& playerPointsDifference > MINIMUM_POINTS_DIFFERENCE_FOR_WIN) {
+					&& playerPointsDifference > MINIMUM_POINTS_DIFFERENCE_FOR_WIN;
+
+			if (isInvalid) {
 				throw new InvalidPointsException("Player points are invalid");
 			} else if (isWin) {
 				boardResult = ((playerPointsCompared > 0) ? firstPlayer
