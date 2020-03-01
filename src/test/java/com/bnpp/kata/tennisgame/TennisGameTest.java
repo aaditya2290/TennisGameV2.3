@@ -1,5 +1,6 @@
 package com.bnpp.kata.tennisgame;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.isA;
 import static org.junit.Assert.assertThat;
 
@@ -20,6 +21,18 @@ public class TennisGameTest {
 		assertThat(tennisGameSecondPlayer, isA(Player.class));
 		assertThat(tennisGameFirstPlayer.getName(), isA(String.class));
 		assertThat(tennisGameSecondPlayer.getName(), isA(String.class));
+	}
+
+	@Test
+	public void tennisGameShouldHaveAScoreBoardForPlayers() {
+		Player firstPlayer = new Player("Sampras");
+		Player secondPlayer = new Player("Agassi");
+		TennisGame tennisGame = new TennisGame(firstPlayer, secondPlayer);
+
+		assertThat(tennisGame.getScoreBoard(), isA(ScoreBoard.class));
+		assertThat(tennisGame.getScoreBoard().getFirstPlayer(), is(firstPlayer));
+		assertThat(tennisGame.getScoreBoard().getSecondPlayer(),
+				is(secondPlayer));
 	}
 
 }

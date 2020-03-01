@@ -1,15 +1,13 @@
 package com.bnpp.kata.tennisgame;
 
-public class TennisGame {
+public class ScoreBoard {
 
 	private Player firstPlayer;
 	private Player secondPlayer;
-	private ScoreBoard scoreBoard;
 
-	public TennisGame(Player firstPlayer, Player secondPlayer) {
+	public ScoreBoard(Player firstPlayer, Player secondPlayer) {
 		this.firstPlayer = firstPlayer;
 		this.secondPlayer = secondPlayer;
-		this.scoreBoard = new ScoreBoard(firstPlayer, secondPlayer);
 	}
 
 	public Player getFirstPlayer() {
@@ -18,10 +16,6 @@ public class TennisGame {
 
 	public Player getSecondPlayer() {
 		return secondPlayer;
-	}
-
-	public ScoreBoard getScoreBoard() {
-		return scoreBoard;
 	}
 
 }
