@@ -18,15 +18,16 @@ public class ScoreBoard {
 
 	public void updateGamePoints() {
 		int playerPointsCompared = firstPlayer.compareTo(secondPlayer);
+		int playerPointsDifference = Math.abs(playerPointsCompared);
 
 		if ((firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_WIN || secondPlayer
 				.getPoints() >= MINIMUM_POINTS_FOR_WIN)
-				&& Math.abs(playerPointsCompared) >= MINIMUM_POINTS_DIFFERENCE_FOR_WIN) {
+				&& playerPointsDifference >= MINIMUM_POINTS_DIFFERENCE_FOR_WIN) {
 			boardResult = ((playerPointsCompared > 0) ? firstPlayer.getName()
 					: secondPlayer.getName()) + " Wins";
 		} else if (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
 				&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
-				&& Math.abs(playerPointsCompared) == POINTS_DIFFERENCE_FOR_ADVANTAGE) {
+				&& playerPointsDifference == POINTS_DIFFERENCE_FOR_ADVANTAGE) {
 			boardResult = "Advantage "
 					+ ((playerPointsCompared > 0) ? firstPlayer.getName()
 							: secondPlayer.getName());
