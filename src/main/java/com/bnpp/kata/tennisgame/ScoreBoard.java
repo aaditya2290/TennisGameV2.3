@@ -2,28 +2,28 @@ package com.bnpp.kata.tennisgame;
 
 public class ScoreBoard {
 
-	private static final String ZERO_STRING_VALUE = String.valueOf(0);
 	private Player firstPlayer;
 	private Player secondPlayer;
+	private String boardResult;
 
 	public ScoreBoard(Player firstPlayer, Player secondPlayer) {
 		this.firstPlayer = firstPlayer;
 		this.secondPlayer = secondPlayer;
+		this.boardResult = "Love All";
 	}
 
-	public Player getFirstPlayer() {
-		return firstPlayer;
-	}
-
-	public Player getSecondPlayer() {
-		return secondPlayer;
+	public void updateGamePoints() {
+		if (firstPlayer.getPoints() == 1) {
+			boardResult = "Fifteen Love";
+		}
 	}
 
 	@Override
 	public String toString() {
 		String[] scoreBoardContents = { "Player Names", "Points",
-				firstPlayer.getName(), ZERO_STRING_VALUE,
-				secondPlayer.getName(), ZERO_STRING_VALUE, "Result", "Love All" };
+				firstPlayer.getName(), String.valueOf(firstPlayer.getPoints()),
+				secondPlayer.getName(),
+				String.valueOf(secondPlayer.getPoints()), "Result", boardResult };
 		String displayResult = new String();
 		for (int scoreIndex = 0; scoreIndex <= scoreBoardContents.length - 1; scoreIndex += 2) {
 			displayResult += String.format("|%1$-25s|%2$-25s|",
@@ -34,5 +34,12 @@ public class ScoreBoard {
 		return displayResult;
 	}
 
+	public Player getFirstPlayer() {
+		return firstPlayer;
+	}
+
+	public Player getSecondPlayer() {
+		return secondPlayer;
+	}
 
 }
