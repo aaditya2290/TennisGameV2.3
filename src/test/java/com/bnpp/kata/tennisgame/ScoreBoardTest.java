@@ -35,6 +35,16 @@ public class ScoreBoardTest {
 
 	}
 
+	@Test
+	public void scoreBoardShouldDisplayLoveFifteenIfSecondPlayerWinsOnePoint() {
+		secondPlayer.setPoints(1);
+		scoreBoard.updateGamePoints();
+		assertThat(
+				scoreBoard.toString(),
+				is(displayScoreBoard(firstPlayer, secondPlayer, "Love Fifteen")));
+
+	}
+
 	private String displayScoreBoard(Player firstPlayer, Player secondPlayer,
 			String gameResult) {
 		String[] scoreBoardContents = { "Player Names", "Points",
