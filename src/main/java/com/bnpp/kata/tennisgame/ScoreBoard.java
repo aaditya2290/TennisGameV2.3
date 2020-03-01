@@ -2,7 +2,7 @@ package com.bnpp.kata.tennisgame;
 
 public class ScoreBoard {
 
-	private static final int POINTS_FOR_DEUCE = 3;
+	private static final int MINIMUM_POINTS_FOR_DEUCE = 3;
 	private Player firstPlayer;
 	private Player secondPlayer;
 	private String boardResult;
@@ -15,7 +15,7 @@ public class ScoreBoard {
 
 	public void updateGamePoints() {
 		if (firstPlayer.compareTo(secondPlayer) == 0) {
-			boardResult = (firstPlayer.getPoints() >= POINTS_FOR_DEUCE) ? "Deuce"
+			boardResult = (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE) ? "Deuce"
 					: firstPlayer.getScore() + " All";
 		} else {
 			boardResult = firstPlayer.getScore() + " "
