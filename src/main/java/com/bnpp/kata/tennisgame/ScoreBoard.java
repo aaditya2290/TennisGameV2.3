@@ -22,11 +22,8 @@ public class ScoreBoard {
 		if ((firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_WIN || secondPlayer
 				.getPoints() >= MINIMUM_POINTS_FOR_WIN)
 				&& Math.abs(playerPointsCompared) >= MINIMUM_POINTS_DIFFERENCE_FOR_WIN) {
-			if (playerPointsCompared > 0) {
-				boardResult = firstPlayer.getName() + " Wins";
-			} else {
-				boardResult = secondPlayer.getName() + " Wins";
-			}
+			boardResult = ((playerPointsCompared > 0) ? firstPlayer.getName()
+					: secondPlayer.getName()) + " Wins";
 		} else if (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
 				&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
 				&& Math.abs(playerPointsCompared) == POINTS_DIFFERENCE_FOR_ADVANTAGE) {
