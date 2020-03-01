@@ -18,4 +18,19 @@ public class ScoreBoard {
 		return secondPlayer;
 	}
 
+	@Override
+	public String toString() {
+		String[] scoreBoardContents = { "Player Names", "Points",
+				firstPlayer.getName(), String.valueOf(0),
+				secondPlayer.getName(), String.valueOf(0), "Result", "Love All" };
+		String displayResult = new String();
+		for (int scoreIndex = 0; scoreIndex <= scoreBoardContents.length - 1; scoreIndex += 2) {
+			displayResult += String.format("|%1$-25s|%2$-25s|",
+					scoreBoardContents[scoreIndex],
+					scoreBoardContents[scoreIndex + 1])
+					+ "\n";
+		}
+		return displayResult;
+	}
+
 }
