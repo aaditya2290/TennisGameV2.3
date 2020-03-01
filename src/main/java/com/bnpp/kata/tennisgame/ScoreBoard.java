@@ -14,7 +14,11 @@ public class ScoreBoard {
 	}
 
 	public void updateGamePoints() {
-		if (firstPlayer.compareTo(secondPlayer) == 0) {
+		if (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
+				&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
+				&& firstPlayer.compareTo(secondPlayer) == 1) {
+			boardResult = "Advantage " + firstPlayer.getName();
+		} else if (firstPlayer.compareTo(secondPlayer) == 0) {
 			boardResult = (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE) ? "Deuce"
 					: firstPlayer.getScore() + " All";
 		} else {

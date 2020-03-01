@@ -83,6 +83,17 @@ public class ScoreBoardTest {
 				is(displayScoreBoard(firstPlayer, secondPlayer, DEUCE)));
 	}
 
+	@Test
+	public void scoreBoardShouldDisplayAdvantageFirstPlayerIfFirstPlayerWinsFourPointsAndSecondPlayerWinsThreePoints() {
+		firstPlayer.setPoints(4);
+		secondPlayer.setPoints(3);
+		scoreBoard.updateGamePoints();
+		assertThat(
+				scoreBoard.toString(),
+				is(displayScoreBoard(firstPlayer, secondPlayer, "Advantage "
+						+ firstPlayer.getName())));
+	}
+
 	private String displayScoreBoard(Player firstPlayer, Player secondPlayer,
 			String gameResult) {
 		String[] scoreBoardContents = { "Player Names", "Points",
