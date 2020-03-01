@@ -2,6 +2,7 @@ package com.bnpp.kata.tennisgame;
 
 public class ScoreBoard {
 
+	private static final int POINTS_DIFFERENCE_FOR_ADVANTAGE = 1;
 	private static final int MINIMUM_POINTS_FOR_DEUCE = 3;
 	private Player firstPlayer;
 	private Player secondPlayer;
@@ -16,7 +17,7 @@ public class ScoreBoard {
 	public void updateGamePoints() {
 		if (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
 				&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
-				&& firstPlayer.compareTo(secondPlayer) == 1) {
+				&& firstPlayer.compareTo(secondPlayer) == POINTS_DIFFERENCE_FOR_ADVANTAGE) {
 			boardResult = "Advantage " + firstPlayer.getName();
 		} else if (firstPlayer.compareTo(secondPlayer) == 0) {
 			boardResult = (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE) ? "Deuce"
