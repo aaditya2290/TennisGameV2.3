@@ -13,11 +13,9 @@ public class ScoreBoard {
 	}
 
 	public void updateGamePoints() {
-		if (firstPlayer.getPoints() == 1 && secondPlayer.getPoints() == 0) {
-			boardResult = "Fifteen Love";
-		} else if (firstPlayer.getPoints() == 0
-				&& secondPlayer.getPoints() == 1) {
-			boardResult = "Love Fifteen";
+		if (firstPlayer.getPoints() > 0 || secondPlayer.getPoints() > 0) {
+			boardResult = firstPlayer.getScore() + " "
+					+ secondPlayer.getScore();
 		}
 	}
 

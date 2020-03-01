@@ -1,5 +1,7 @@
 package com.bnpp.kata.tennisgame;
 
+import com.bnpp.kata.tennisgame.constants.PointsToScoreMapper;
+
 public class Player {
 
 	private String name;
@@ -19,6 +21,10 @@ public class Player {
 
 	public int getPoints() {
 		return points;
+	}
+
+	public String getScore() {
+		return PointsToScoreMapper.getScore(points);
 	}
 
 }
