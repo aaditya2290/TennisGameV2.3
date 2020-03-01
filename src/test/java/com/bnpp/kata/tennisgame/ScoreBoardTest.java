@@ -117,6 +117,17 @@ public class ScoreBoardTest {
 						firstPlayer.getName() + " Wins")));
 	}
 
+	@Test
+	public void scoreBoardShouldDisplaySecondPlayerWinsIfFirstPlayerWinsOnePointAndSecondPlayerWinsFourPoints() {
+		firstPlayer.setPoints(1);
+		secondPlayer.setPoints(4);
+		scoreBoard.updateGamePoints();
+		assertThat(
+				scoreBoard.toString(),
+				is(displayScoreBoard(firstPlayer, secondPlayer,
+						secondPlayer.getName() + " Wins")));
+	}
+
 	private String displayScoreBoard(Player firstPlayer, Player secondPlayer,
 			String gameResult) {
 		String[] scoreBoardContents = { "Player Names", "Points",
