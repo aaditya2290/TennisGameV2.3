@@ -8,6 +8,7 @@ import org.junit.Test;
 
 public class ScoreBoardTest {
 
+	private static final String ADVANTAGE = "Advantage ";
 	private static final String DEUCE = "Deuce";
 	private Player firstPlayer;
 	private Player secondPlayer;
@@ -90,7 +91,7 @@ public class ScoreBoardTest {
 		scoreBoard.updateGamePoints();
 		assertThat(
 				scoreBoard.toString(),
-				is(displayScoreBoard(firstPlayer, secondPlayer, "Advantage "
+				is(displayScoreBoard(firstPlayer, secondPlayer, ADVANTAGE
 						+ firstPlayer.getName())));
 	}
 
@@ -101,7 +102,7 @@ public class ScoreBoardTest {
 		scoreBoard.updateGamePoints();
 		assertThat(
 				scoreBoard.toString(),
-				is(displayScoreBoard(firstPlayer, secondPlayer, "Advantage "
+				is(displayScoreBoard(firstPlayer, secondPlayer, ADVANTAGE
 						+ secondPlayer.getName())));
 	}
 
