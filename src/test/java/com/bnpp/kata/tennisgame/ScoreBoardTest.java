@@ -3,25 +3,30 @@ package com.bnpp.kata.tennisgame;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Before;
 import org.junit.Test;
 
 public class ScoreBoardTest {
 
+	private Player firstPlayer;
+	private Player secondPlayer;
+	private ScoreBoard scoreBoard;
+
+	@Before
+	public void setUp() {
+		firstPlayer = new Player("Sampras");
+		secondPlayer = new Player("Agassi");
+		scoreBoard = new ScoreBoard(firstPlayer, secondPlayer);
+	}
+
 	@Test
 	public void scoreBoardShouldDisplayLoveAllBeforeGameBegins() {
-
-		Player firstPlayer = new Player("Sampras");
-		Player secondPlayer = new Player("Agassi");
-		ScoreBoard scoreBoard = new ScoreBoard(firstPlayer, secondPlayer);
 		assertThat(scoreBoard.toString(),
 				is(displayScoreBoard(firstPlayer, secondPlayer, "Love All")));
 	}
 
 	@Test
 	public void scoreBoardShouldDisplayFifteenLoveIfFirstPlayerWinsOnePoint() {
-		Player firstPlayer = new Player("Sampras");
-		Player secondPlayer = new Player("Agassi");
-		ScoreBoard scoreBoard = new ScoreBoard(firstPlayer, secondPlayer);
 		firstPlayer.setPoints(1);
 		scoreBoard.updateGamePoints();
 		assertThat(
