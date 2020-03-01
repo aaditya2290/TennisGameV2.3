@@ -15,7 +15,7 @@ public class ScoreBoard {
 
 	public void updateGamePoints() {
 		if (firstPlayer.compareTo(secondPlayer) == 0) {
-			boardResult = (firstPlayer.getPoints() == POINTS_FOR_DEUCE) ? "Deuce"
+			boardResult = (firstPlayer.getPoints() >= POINTS_FOR_DEUCE) ? "Deuce"
 					: firstPlayer.getScore() + " All";
 		} else {
 			boardResult = firstPlayer.getScore() + " "
