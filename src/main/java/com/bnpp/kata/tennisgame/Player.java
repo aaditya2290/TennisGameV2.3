@@ -2,7 +2,7 @@ package com.bnpp.kata.tennisgame;
 
 import com.bnpp.kata.tennisgame.constants.PointsToScoreMapper;
 
-public class Player {
+public class Player implements Comparable<Player> {
 
 	private String name;
 	private int points;
@@ -25,6 +25,11 @@ public class Player {
 
 	public String getScore() {
 		return PointsToScoreMapper.getScore(points);
+	}
+
+	@Override
+	public int compareTo(Player p) {
+		return this.points - p.points;
 	}
 
 }
