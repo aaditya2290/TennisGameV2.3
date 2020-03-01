@@ -128,6 +128,17 @@ public class ScoreBoardTest {
 						secondPlayer.getName() + " Wins")));
 	}
 
+	@Test
+	public void scoreBoardShouldDisplayPlayerPointsAreInvalidIfFirstPlayerWinsSixPointsAndSecondPlayerWinsOnePoint() {
+		firstPlayer.setPoints(6);
+		secondPlayer.setPoints(1);
+		scoreBoard.updateGamePoints();
+		assertThat(
+				scoreBoard.toString(),
+				is(displayScoreBoard(firstPlayer, secondPlayer,
+						"Player points are invalid")));
+	}
+
 	private String displayScoreBoard(Player firstPlayer, Player secondPlayer,
 			String gameResult) {
 		String[] scoreBoardContents = { "Player Names", "Points",

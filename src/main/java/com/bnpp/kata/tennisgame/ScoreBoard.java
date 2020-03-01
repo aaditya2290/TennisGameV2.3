@@ -1,5 +1,7 @@
 package com.bnpp.kata.tennisgame;
 
+import com.bnpp.kata.tennisgame.exceptions.InvalidPointsException;
+
 public class ScoreBoard {
 
 	private static final String LOVE_ALL = "Love All";
@@ -18,30 +20,38 @@ public class ScoreBoard {
 	}
 
 	public void updateGamePoints() {
-		int playerPointsCompared = firstPlayer.compareTo(secondPlayer);
-		int playerPointsDifference = Math.abs(playerPointsCompared);
+		try {
+			int playerPointsCompared = firstPlayer.compareTo(secondPlayer);
+			int playerPointsDifference = Math.abs(playerPointsCompared);
 
-		boolean isWin = (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_WIN || secondPlayer
-				.getPoints() >= MINIMUM_POINTS_FOR_WIN)
-				&& playerPointsDifference >= MINIMUM_POINTS_DIFFERENCE_FOR_WIN;
+			boolean isWin = (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_WIN || secondPlayer
+					.getPoints() >= MINIMUM_POINTS_FOR_WIN)
+					&& playerPointsDifference >= MINIMUM_POINTS_DIFFERENCE_FOR_WIN;
 
-		boolean isAdvantage = firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
-				&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
-				&& playerPointsDifference == POINTS_DIFFERENCE_FOR_ADVANTAGE;
+			boolean isAdvantage = firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
+					&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
+					&& playerPointsDifference == POINTS_DIFFERENCE_FOR_ADVANTAGE;
 
-		if (isWin) {
-			boardResult = ((playerPointsCompared > 0) ? firstPlayer.getName()
-					: secondPlayer.getName()) + " Wins";
-		} else if (isAdvantage) {
-			boardResult = "Advantage "
-					+ ((playerPointsCompared > 0) ? firstPlayer.getName()
-							: secondPlayer.getName());
-		} else if (playerPointsCompared == 0) {
-			boardResult = (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE) ? "Deuce"
-					: firstPlayer.getScore() + " All";
-		} else {
-			boardResult = firstPlayer.getScore() + " "
-					+ secondPlayer.getScore();
+			if ((firstPlayer.getPoints() > MINIMUM_POINTS_FOR_WIN || secondPlayer
+					.getPoints() > MINIMUM_POINTS_FOR_WIN)
+					&& playerPointsDifference > MINIMUM_POINTS_DIFFERENCE_FOR_WIN) {
+				throw new InvalidPointsException("Player points are invalid");
+			} else if (isWin) {
+				boardResult = ((playerPointsCompared > 0) ? firstPlayer
+						.getName() : secondPlayer.getName()) + " Wins";
+			} else if (isAdvantage) {
+				boardResult = "Advantage "
+						+ ((playerPointsCompared > 0) ? firstPlayer.getName()
+								: secondPlayer.getName());
+			} else if (playerPointsCompared == 0) {
+				boardResult = (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE) ? "Deuce"
+						: firstPlayer.getScore() + " All";
+			} else {
+				boardResult = firstPlayer.getScore() + " "
+						+ secondPlayer.getScore();
+			}
+		} catch (InvalidPointsException e) {
+			boardResult = e.getMessage();
 		}
 	}
 
