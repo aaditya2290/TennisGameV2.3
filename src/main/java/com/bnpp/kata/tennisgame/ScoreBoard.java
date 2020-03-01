@@ -14,11 +14,8 @@ public class ScoreBoard {
 
 	public void updateGamePoints() {
 		if (firstPlayer.compareTo(secondPlayer) == 0) {
-			if (firstPlayer.getPoints() == 3) {
-				boardResult = "Deuce";
-			} else {
-				boardResult = firstPlayer.getScore() + " All";
-			}
+			boardResult = (firstPlayer.getPoints() == 3) ? "Deuce"
+					: firstPlayer.getScore() + " All";
 		} else {
 			boardResult = firstPlayer.getScore() + " "
 					+ secondPlayer.getScore();
