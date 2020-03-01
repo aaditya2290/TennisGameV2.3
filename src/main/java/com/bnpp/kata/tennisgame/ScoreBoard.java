@@ -20,14 +20,18 @@ public class ScoreBoard {
 		int playerPointsCompared = firstPlayer.compareTo(secondPlayer);
 		int playerPointsDifference = Math.abs(playerPointsCompared);
 
-		if ((firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_WIN || secondPlayer
+		boolean isWin = (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_WIN || secondPlayer
 				.getPoints() >= MINIMUM_POINTS_FOR_WIN)
-				&& playerPointsDifference >= MINIMUM_POINTS_DIFFERENCE_FOR_WIN) {
+				&& playerPointsDifference >= MINIMUM_POINTS_DIFFERENCE_FOR_WIN;
+
+		boolean isAdvantage = firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
+				&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
+				&& playerPointsDifference == POINTS_DIFFERENCE_FOR_ADVANTAGE;
+
+		if (isWin) {
 			boardResult = ((playerPointsCompared > 0) ? firstPlayer.getName()
 					: secondPlayer.getName()) + " Wins";
-		} else if (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
-				&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
-				&& playerPointsDifference == POINTS_DIFFERENCE_FOR_ADVANTAGE) {
+		} else if (isAdvantage) {
 			boardResult = "Advantage "
 					+ ((playerPointsCompared > 0) ? firstPlayer.getName()
 							: secondPlayer.getName());
