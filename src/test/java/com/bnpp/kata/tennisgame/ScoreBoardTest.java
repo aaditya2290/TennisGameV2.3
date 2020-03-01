@@ -94,6 +94,17 @@ public class ScoreBoardTest {
 						+ firstPlayer.getName())));
 	}
 
+	@Test
+	public void scoreBoardShouldDisplayAdvantageSecondPlayerIfFirstPlayerWinsTenPointsAndSecondPlayerWinsElevenPoints() {
+		firstPlayer.setPoints(10);
+		secondPlayer.setPoints(11);
+		scoreBoard.updateGamePoints();
+		assertThat(
+				scoreBoard.toString(),
+				is(displayScoreBoard(firstPlayer, secondPlayer, "Advantage "
+						+ secondPlayer.getName())));
+	}
+
 	private String displayScoreBoard(Player firstPlayer, Player secondPlayer,
 			String gameResult) {
 		String[] scoreBoardContents = { "Player Names", "Points",

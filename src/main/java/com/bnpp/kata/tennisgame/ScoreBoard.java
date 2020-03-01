@@ -19,8 +19,12 @@ public class ScoreBoard {
 
 		if (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
 				&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
-				&& playerPointsCompared == POINTS_DIFFERENCE_FOR_ADVANTAGE) {
-			boardResult = "Advantage " + firstPlayer.getName();
+				&& Math.abs(playerPointsCompared) == POINTS_DIFFERENCE_FOR_ADVANTAGE) {
+			if (playerPointsCompared > 0) {
+				boardResult = "Advantage " + firstPlayer.getName();
+			} else {
+				boardResult = "Advantage " + secondPlayer.getName();
+			}
 		} else if (playerPointsCompared == 0) {
 			boardResult = (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE) ? "Deuce"
 					: firstPlayer.getScore() + " All";
