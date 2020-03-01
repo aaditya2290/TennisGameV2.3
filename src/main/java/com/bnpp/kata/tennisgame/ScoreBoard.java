@@ -2,6 +2,7 @@ package com.bnpp.kata.tennisgame;
 
 public class ScoreBoard {
 
+	private static final String ZERO_STRING_VALUE = String.valueOf(0);
 	private Player firstPlayer;
 	private Player secondPlayer;
 
@@ -21,8 +22,8 @@ public class ScoreBoard {
 	@Override
 	public String toString() {
 		String[] scoreBoardContents = { "Player Names", "Points",
-				firstPlayer.getName(), String.valueOf(0),
-				secondPlayer.getName(), String.valueOf(0), "Result", "Love All" };
+				firstPlayer.getName(), ZERO_STRING_VALUE,
+				secondPlayer.getName(), ZERO_STRING_VALUE, "Result", "Love All" };
 		String displayResult = new String();
 		for (int scoreIndex = 0; scoreIndex <= scoreBoardContents.length - 1; scoreIndex += 2) {
 			displayResult += String.format("|%1$-25s|%2$-25s|",
@@ -32,5 +33,6 @@ public class ScoreBoard {
 		}
 		return displayResult;
 	}
+
 
 }
