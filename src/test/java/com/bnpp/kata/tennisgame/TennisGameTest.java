@@ -13,10 +13,13 @@ public class TennisGameTest {
 		Player secondPlayer = new Player("Agassi");
 		TennisGame tennisGame = new TennisGame(firstPlayer, secondPlayer);
 
-		assertThat(tennisGame.getFirstPlayer(), isA(Player.class));
-		assertThat(tennisGame.getSecondPlayer(), isA(Player.class));
-		assertThat(tennisGame.getFirstPlayer().getName(), isA(String.class));
-		assertThat(tennisGame.getSecondPlayer().getName(), isA(String.class));
+		Player tennisGameFirstPlayer = tennisGame.getFirstPlayer();
+		Player tennisGameSecondPlayer = tennisGame.getSecondPlayer();
+
+		assertThat(tennisGameFirstPlayer, isA(Player.class));
+		assertThat(tennisGameSecondPlayer, isA(Player.class));
+		assertThat(tennisGameFirstPlayer.getName(), isA(String.class));
+		assertThat(tennisGameSecondPlayer.getName(), isA(String.class));
 	}
 
 }
