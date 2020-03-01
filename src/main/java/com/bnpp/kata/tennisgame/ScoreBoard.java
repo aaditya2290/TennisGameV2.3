@@ -17,7 +17,9 @@ public class ScoreBoard {
 	public void updateGamePoints() {
 		int playerPointsCompared = firstPlayer.compareTo(secondPlayer);
 
-		if (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
+		if (firstPlayer.getPoints() >= 4 && playerPointsCompared >= 2) {
+			boardResult = firstPlayer.getName() + " Wins";
+		} else if (firstPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
 				&& secondPlayer.getPoints() >= MINIMUM_POINTS_FOR_DEUCE
 				&& Math.abs(playerPointsCompared) == POINTS_DIFFERENCE_FOR_ADVANTAGE) {
 			boardResult = "Advantage "
